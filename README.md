@@ -1,17 +1,14 @@
-### "Mini Project AMI code" 
+### CREATING APP CUSTOMIZED AMI USING PACKER
 
-Please consider the  below flow of deployment of the code.
+Please note this AMI creation has to be dealt by local. 
+Ensure you have installed packer in your local. If not pls install is from https://packer.io set its location in Path that we can access it whenever we run any command with packer in command from anywhere.
+1.	Clone the repo in local https://github.com/mallayya-s/mini-proj-ami.git 
+2.	Goto the cloned repo, launch the command prompt from the location where app_ami.json is located.
+3.	Run below command to validate weather the json have any syntactical errors
+packer validate app_ami.json
+4.	Run below command to generate application ami
+Packer build app_ami.json 
 
-## First, as the packer needs the key to be available in AWS account in which AMI will be built. We need to create the ec2-key pair first.
 
-1. Clone this repo in local
-2. Navigate to ./packer-key-tf folder
-3. Run terraform init, terraform plan and finally terraform apply commands to create key pair.
-4. Once the terraform is applied successfully, the private key file with the name packer-key will be created in ./packer-key-tf folder (where terraform have ran)
+### Note: If you don’t specify the security group and key pair. the packer creates its own temporary keypair and security groups for generating AMI in the default VPC, they will be later auto destroyed, once the packer run is completed. So we are not specifying security group and keypair the packer creates the packer instance in default VPC, hence we need to ensure the internet gateway is allowed in those default subnets to allow 0/0 n/w for ssh connectivity. 
 
-
-## Second, Run the packer build to generate AMI.
-1. Ensure the right key pair name and path to private key is declared in app-ami.json for the variable ssh_private_key_file and ssh_keypair_name
-2. Run below command from the parent directory where app-ami.json is located
-   ** packer validate app_ami.json  # this will finds any syntactical error in app-ami.json file
-   ** packer build app_ami.json     # This actually generate the AMI by taking RHEL8 as foundation AMI with the customized configs.
