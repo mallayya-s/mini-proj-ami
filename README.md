@@ -5,9 +5,10 @@ Ensure you have installed packer in your local. If not pls install is from https
 1.	Clone the repo in local https://github.com/mallayya-s/mini-proj-ami.git 
 2.	Goto the cloned repo, launch the command prompt from the location where app_ami.json is located.
 3.	Run below command to validate weather the json have any syntactical errors
-packer validate app_ami.json
+* packer validate app_ami.json
+
 4.	Run below command to generate application ami
-Packer build app_ami.json 
+* Packer build app_ami.json 
 
 
 ### Note: 
