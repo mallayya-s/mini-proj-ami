@@ -10,5 +10,5 @@ packer validate app_ami.json
 Packer build app_ami.json 
 
 
-### Note: If you don’t specify the security group and key pair. the packer creates its own temporary keypair and security groups for generating AMI in the default VPC, they will be later auto destroyed, once the packer run is completed. So we are not specifying security group and keypair the packer creates the packer instance in default VPC, hence we need to ensure the internet gateway is allowed in those default subnets to allow 0/0 n/w for ssh connectivity. 
-
+### Note: 
+If you don’t specify the security group and key pair. the packer creates its own temporary keypair and security groups for generating AMI in the default VPC, they will be later auto destroyed, once the packer run is completed. So we are not specifying security group and keypair the packer creates the packer instance in default VPC, hence we need to ensure the internet gateway is allowed in those default subnets to allow 0/0 n/w for ssh connectivity. (we havent specified in app_ami.json)
